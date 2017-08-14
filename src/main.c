@@ -6,17 +6,27 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
 
-  char c;
+ int i, soma=0;
 
-  c = 1;
+ char texto[300];
 
-  while (c != '\n') {
-    scanf("%c", &c);
-  }
+ fgets(texto,300,stdin);
 
-  printf("1\n");
+ for(i=0; texto[i]!='\n' ; i++){
+
+  if(((texto[i]!=' ')&&(texto[i]!=',')&&(texto[i]!='.')&&(texto[i]!='!')&&(texto[i]!='-')) && ((texto[i+1]==' ')||(texto[i+1]==',')||(texto[i+1]=='.')||(texto[i+1]=='-')||(texto[i]=='!'))){ soma++; }
+
+  if(((texto[i-1]>=48)&&(texto[i-1]<=57))&&((texto[i]=='.')||(texto[i]==','))&&((texto[i+1]>=48)&&(texto[i+1]<=57))) { soma--;}
+
+}
+
+if((texto[i-1]!=' ')&&(texto[i-1]!='.')&&(texto[i-1]!=',')&&(texto[i-1]!='!')){soma = soma+1;}
+
+printf("%d\n", soma);
+   
   return 0;
 }
